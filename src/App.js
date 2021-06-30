@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { UserContextProvider } from "./components/context/userContext";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Login from "./components/pages/Login";
+import Home from "./components/pages/Home";
+import Menu from "./components/pages/Menu";
+
+import "./global.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContextProvider>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Login}></Route>
+          <Route path="/Home" exact component={Home}></Route>
+          <Route path="/Menu" exact component={Menu}></Route>
+        </Switch>
+      </Router>
+    </UserContextProvider>
   );
 }
 
